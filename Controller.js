@@ -1,7 +1,8 @@
+import axios from "axios";
 export const BASE_URL = "https://api.github.com/orgs/stackbuilders/repos";
 
-export const fill = async (myAxios) => {
-  const response = await myAxios.get(BASE_URL);
+export const fill = async () => {
+  const response = await axios.get(BASE_URL);
 
   const reposList = response.data;
 

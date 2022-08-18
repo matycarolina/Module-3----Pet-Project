@@ -154,10 +154,10 @@ describe("fill", () => {
   describe("when API call is successful", () => {
     it("should return repos list", async () => {
       // given
-      mock.onGet(`${functions.BASE_URL}`).reply(200);
+      mock.onGet(`${functions.BASE_URL}`).reply(200, testData);
 
       // when
-      const result = await functions.fill(mock);
+      const result = await functions.fill();
 
       // then
       expect(mock.history.get[0].url).toEqual(`${functions.BASE_URL}`);
@@ -171,7 +171,7 @@ describe("fill", () => {
       mock.onGet(`${functions.BASE_URL}`).networkErrorOnce();
 
       // when
-      const result = await functions.fill(mock);
+      const result = await functions.fill();
 
       // then
       expect(mock.history.get[0].url).toEqual(`${functions.BASE_URL}`);
