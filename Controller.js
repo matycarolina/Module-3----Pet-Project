@@ -1,7 +1,7 @@
+export const BASE_URL = "https://api.github.com/orgs/stackbuilders/repos";
+
 export const fill = async (myAxios) => {
-  const response = await myAxios.get(
-    `https://api.github.com/orgs/stackbuilders/repos`
-  );
+  const response = await myAxios.get(BASE_URL);
 
   const reposList = response.data;
 

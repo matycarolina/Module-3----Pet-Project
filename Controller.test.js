@@ -1,4 +1,6 @@
 import * as functions from "./Controller";
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
 
 const testData = [
   {
@@ -137,6 +139,46 @@ const formatedData = [
     updated: "2022-02-06T02:13:28Z",
   },
 ];
+
+describe("fill", () => {
+  let mock;
+
+  beforeAll(() => {
+    mock = new MockAdapter(axios);
+  });
+
+  afterEach(() => {
+    mock.reset();
+  });
+
+  describe("when API call is successful", () => {
+    it("should return repos list", async () => {
+      // given
+      mock.onGet(`${functions.BASE_URL}`).reply(200);
+
+      // when
+      const result = await functions.fill(mock);
+
+      // then
+      expect(mock.history.get[0].url).toEqual(`${functions.BASE_URL}`);
+      expect(result).toEqual(testData);
+    });
+  });
+
+  describe("when API call fails", () => {
+    it("should return empty repos list", async () => {
+      // given
+      mock.onGet(`${functions.BASE_URL}`).networkErrorOnce();
+
+      // when
+      const result = await functions.fill(mock);
+
+      // then
+      expect(mock.history.get[0].url).toEqual(`${functions.BASE_URL}`);
+      expect(result).toEqual([]);
+    });
+  });
+});
 
 test("Should return a repo object list", () => {
   expect(functions.formatList(testData)).toEqual(formatedData);
