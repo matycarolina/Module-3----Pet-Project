@@ -2,6 +2,12 @@ import * as functions from "../Controller";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { testData, formatedData } from "./dataTest";
+import {
+  filterByStarsResp,
+  filterReposAlphaResp,
+  lastModifiedResp,
+  top5StarsResp,
+} from "./expectedResponses";
 
 //Fill repo list from API
 describe("fill", () => {
@@ -86,23 +92,7 @@ test("Should return the sum of all repos' stars", () => {
 describe("filterByStars", () => {
   describe("when list is received successfully", () => {
     it("should return filtered repos list", () => {
-      expect(functions.filterByStars(formatedData)).toEqual([
-        {
-          name: "pivotal_planning_poker",
-          stars: 6,
-          updated: "2017-05-21T04:36:44Z",
-        },
-        {
-          name: "propel",
-          stars: 9,
-          updated: "2019-08-13T14:44:41Z",
-        },
-        {
-          name: "stub_shell",
-          stars: 7,
-          updated: "2017-06-05T19:58:59Z",
-        },
-      ]);
+      expect(functions.filterByStars(formatedData)).toEqual(filterByStarsResp);
     });
   });
 
@@ -114,56 +104,14 @@ describe("filterByStars", () => {
 });
 
 test("Should return the repos with over 5 stars", () => {
-  expect(functions.filterByStars(formatedData)).toEqual([
-    {
-      name: "pivotal_planning_poker",
-      stars: 6,
-      updated: "2017-05-21T04:36:44Z",
-    },
-    {
-      name: "propel",
-      stars: 9,
-      updated: "2019-08-13T14:44:41Z",
-    },
-    {
-      name: "stub_shell",
-      stars: 7,
-      updated: "2017-06-05T19:58:59Z",
-    },
-  ]);
+  expect(functions.filterByStars(formatedData)).toEqual(filterByStarsResp);
 });
 
 //Last modified repos
 describe("lastModified", () => {
   describe("when list is received successfully", () => {
     it("should return 5 last modified repos", () => {
-      expect(functions.lastModified(formatedData)).toEqual([
-        {
-          name: "hubot",
-          stars: 2,
-          updated: "2022-02-06T02:13:28Z",
-        },
-        {
-          name: "propel",
-          stars: 9,
-          updated: "2019-08-13T14:44:41Z",
-        },
-        {
-          name: "stub_shell",
-          stars: 7,
-          updated: "2017-06-05T19:58:59Z",
-        },
-        {
-          name: "pivotal_planning_poker",
-          stars: 6,
-          updated: "2017-05-21T04:36:44Z",
-        },
-        {
-          name: "hackchange_demo",
-          stars: 0,
-          updated: "2014-12-15T12:18:33Z",
-        },
-      ]);
+      expect(functions.lastModified(formatedData)).toEqual(lastModifiedResp);
     });
   });
 
@@ -175,31 +123,47 @@ describe("lastModified", () => {
 });
 
 test("Should return 5 last modified repos", () => {
-  expect(functions.lastModified(formatedData)).toEqual([
-    {
-      name: "hubot",
-      stars: 2,
-      updated: "2022-02-06T02:13:28Z",
-    },
-    {
-      name: "propel",
-      stars: 9,
-      updated: "2019-08-13T14:44:41Z",
-    },
-    {
-      name: "stub_shell",
-      stars: 7,
-      updated: "2017-06-05T19:58:59Z",
-    },
-    {
-      name: "pivotal_planning_poker",
-      stars: 6,
-      updated: "2017-05-21T04:36:44Z",
-    },
-    {
-      name: "hackchange_demo",
-      stars: 0,
-      updated: "2014-12-15T12:18:33Z",
-    },
-  ]);
+  expect(functions.lastModified(formatedData)).toEqual(lastModifiedResp);
+});
+
+//Repos with more stars
+describe("top5Stars", () => {
+  describe("when list is received successfully", () => {
+    it("should return top 5 repos with more stars", () => {
+      expect(functions.top5Stars(formatedData)).toEqual(top5StarsResp);
+    });
+  });
+
+  describe("when list is not received", () => {
+    it("should return empty repos list", () => {
+      expect(functions.top5Stars([])).toEqual([]);
+    });
+  });
+});
+
+test("Should return top 5 repos with more stars", () => {
+  expect(functions.top5Stars(formatedData)).toEqual(top5StarsResp);
+});
+
+//Alphabetically ordered repos and remove all repos that start with "h"
+describe("filterReposAlpha", () => {
+  describe("when list is received successfully", () => {
+    it("should return alphabetically ordered repos and remove all repos that start with h", () => {
+      expect(functions.filterReposAlpha(formatedData)).toEqual(
+        filterReposAlphaResp
+      );
+    });
+  });
+
+  describe("when list is not received", () => {
+    it("should return empty repos list", () => {
+      expect(functions.filterReposAlpha([])).toEqual([]);
+    });
+  });
+});
+
+test("Should return alphabetically ordered repos and remove all repos that start with h", () => {
+  expect(functions.filterReposAlpha(formatedData)).toEqual(
+    filterReposAlphaResp
+  );
 });
