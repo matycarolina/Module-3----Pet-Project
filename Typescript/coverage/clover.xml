@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1661279809242" clover="3.2.0">
+  <project timestamp="1661279809242" name="All files">
+    <metrics statements="37" coveredstatements="37" conditionals="0" coveredconditionals="0" methods="15" coveredmethods="15" elements="52" coveredelements="52" complexity="0" loc="37" ncloc="37" packages="2" files="3" classes="3"/>
+    <package name="Typescript">
+      <metrics statements="31" coveredstatements="31" conditionals="0" coveredconditionals="0" methods="15" coveredmethods="15"/>
+      <file name="Controller.ts" path="/home/acontreras/Documents/PetProjectTesting/Typescript/Controller.ts">
+        <metrics statements="31" coveredstatements="31" conditionals="0" coveredconditionals="0" methods="15" coveredmethods="15"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="12" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="35" count="12" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="12" type="stmt"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="3" type="stmt"/>
+        <line num="52" count="16" type="stmt"/>
+        <line num="56" count="3" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="60" count="16" type="stmt"/>
+        <line num="62" count="3" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="66" count="3" type="stmt"/>
+        <line num="67" count="16" type="stmt"/>
+        <line num="68" count="12" type="stmt"/>
+        <line num="70" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="Typescript.test">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="dataTest.ts" path="/home/acontreras/Documents/PetProjectTesting/Typescript/test/dataTest.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="106" count="1" type="stmt"/>
+      </file>
+      <file name="expectedResponses.ts" path="/home/acontreras/Documents/PetProjectTesting/Typescript/test/expectedResponses.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
