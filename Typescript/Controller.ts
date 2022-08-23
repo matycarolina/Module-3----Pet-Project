@@ -50,3 +50,17 @@ export const lastModified = (list: Repo[]) => {
 
   return latestRepos;
 };
+
+export const top5Stars = (list: Repo[]) => {
+  const top5Repos = list.sort((s1, s2) => s2.stars - s1.stars).slice(0, 5);
+
+  return top5Repos;
+};
+
+export const filterReposAlpha = (list: Repo[]) => {
+  const reposAlpha = list
+    .sort((n1, n2) => n1.name.localeCompare(n2.name))
+    .filter((repo: Repo) => repo.name[0] !== "h");
+
+  return reposAlpha;
+};
