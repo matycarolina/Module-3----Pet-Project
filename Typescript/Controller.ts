@@ -1,19 +1,24 @@
 import axios from "axios";
+import { OgRepo, testRepo } from "./test/dataTest";
 export const BASE_URL = "https://api.github.com/orgs/stackbuilders/repos";
 
 interface Repo {
   name: string;
   stars: number;
-  updated: Date;
+  updated: string;
 }
 
 export const fill = async () => {
-  const response = await axios.get(BASE_URL);
-  const reposList = response.data;
-  return reposList;
+  try {
+    const response = await axios.get(BASE_URL);
+    const reposList = response.data;
+    return reposList;
+  } catch (error) {
+    return [];
+  }
 };
 
-export const formatList = (list: []): Repo[] => {
+export const formatList = (list: OgRepo[] | testRepo[]): Repo[] => {
   const formatedList = list.map((repo: any) => {
     return <Repo>{
       name: repo.name,
